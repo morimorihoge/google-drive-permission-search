@@ -1,0 +1,57 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    activesupport (4.1.6)
+      i18n (~> 0.6, >= 0.6.9)
+      json (~> 1.7, >= 1.7.7)
+      minitest (~> 5.1)
+      thread_safe (~> 0.1)
+      tzinfo (~> 1.1)
+    addressable (2.3.6)
+    autoparse (0.3.3)
+      addressable (>= 2.3.1)
+      extlib (>= 0.9.15)
+      multi_json (>= 1.0.0)
+    extlib (0.9.16)
+    faraday (0.9.0)
+      multipart-post (>= 1.2, < 3)
+    google-api-client (0.7.1)
+      addressable (>= 2.3.2)
+      autoparse (>= 0.3.3)
+      extlib (>= 0.9.15)
+      faraday (>= 0.9.0)
+      jwt (>= 0.1.5)
+      launchy (>= 2.1.1)
+      multi_json (>= 1.0.0)
+      retriable (>= 1.4)
+      signet (>= 0.5.0)
+      uuidtools (>= 2.1.0)
+    i18n (0.6.11)
+    json (1.8.1)
+    jwt (1.0.0)
+    launchy (2.4.2)
+      addressable (~> 2.3)
+    minitest (5.4.2)
+    multi_json (1.10.1)
+    multipart-post (2.0.0)
+    retriable (1.4.1)
+    ruby-ole (1.2.11.7)
+    signet (0.5.1)
+      addressable (>= 2.2.3)
+      faraday (>= 0.9.0.rc5)
+      jwt (>= 0.1.5)
+      multi_json (>= 1.0.0)
+    spreadsheet (1.0.0)
+      ruby-ole (>= 1.0)
+    thread_safe (0.3.4)
+    tzinfo (1.2.2)
+      thread_safe (~> 0.1)
+    uuidtools (2.1.5)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  activesupport
+  google-api-client (>= 0.6)
+  spreadsheet
