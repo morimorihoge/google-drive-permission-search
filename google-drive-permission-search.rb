@@ -16,7 +16,7 @@ API_VERSION           = 'v2'
 CACHED_API_FILE       = "drive-#{API_VERSION}.cache"
 CREDENTIAL_STORE_FILE = "#{$0}-oauth2.json"
 
-DEBUG = false
+debug = false
 
 # #setup is originated by https://github.com/google/google-api-ruby-client-samples/tree/master/drive
 def setup()
@@ -161,7 +161,7 @@ end
 opt = OptionParser.new
 
 opt.on('-v', '--verbose') do |v|
-  DEBUG = true
+  debug = true
 end
 
 file_name = nil
@@ -195,7 +195,7 @@ client, drive = setup()
 row_index        = 0
 all_files_result = get_files(client, drive)
 all_files_result.data.items.each do |file|
-  if DEBUG
+  if debug
     STDERR.puts "fetching id: #{file.id}, title: #{file.title}..."
   end
 
