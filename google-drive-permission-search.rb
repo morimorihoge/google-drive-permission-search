@@ -23,7 +23,13 @@ def setup()
   client = Google::APIClient.new(:application_name    => APPLICATION_NAME,
                                  :application_version => APPLICATION_VERSION)
 
-  file_storage = Google::APIClient::FileStorage.new(CREDENTIAL_STORE_FILE)
+  file_storage = nil
+  begin
+    file_storage = Google::APIClient::FileStorage.new(CREDENTIAL_STORE_FILE)
+  rescue URI::InvalidURIError
+    File.delete CREDENTIAL_STORE_FILE
+    file_storage = Google::APIClient::FileStorage.new(CREDENTIAL_STORE_FILE)
+  end
   if file_storage.authorization.nil?
     client_secrets       = Google::APIClient::ClientSecrets.load
     flow                 = Google::APIClient::InstalledAppFlow.new(
@@ -55,7 +61,7 @@ def get_files(client, drive)
   result = client.execute(
     api_method: drive.files.list,
     parameters: {
-      maxResults: 10,
+      maxResults: 1000,
     },
   )
   # jj result.data.to_hash
@@ -129,7 +135,7 @@ class TsvOutputAdapter < OutputAdapter
 
   # TSVでは改行が入らないのでカンマ区切りで突っ込む
   def []=(row, col, val)
-    @data[row.to_i]           = [] if @data[row.to_i].blank?
+    @data[row.to_i] = [] if @data[row.to_i].blank?
     if val.instance_of? Array
       @data[row.to_i][col.to_i] = ''
       val.each do |v|
